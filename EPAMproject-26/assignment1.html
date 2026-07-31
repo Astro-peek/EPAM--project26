@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ Bank Diwali Coupon</title>
+</head>
+<body>
+
+	<h1>XYZ Bank - Festival Bonanza Offer</h1>
+
+	
+	<p id="welcome"></p>
+ 
+
+	
+	<button onclick="showSteps()">Register</button>
+
+	<div id="steps" style="display:none;">
+		<p>Step 1: Enter your Customer ID below</p>
+		<p>Step 2: Click Generate Coupon button</p>
+		<p>Step 3: Copy your coupon code and use it while shopping</p>
+
+		
+		<input type="text" id="custID" placeholder="Enter Customer ID to validate">
+		<button onclick="validateCustomer()">Validate</button>
+		<br>
+		<div id="validatemessage"></div>
+		<br>
+		<input type="text" id="customerId" placeholder="Enter Customer ID">
+		<button onclick="generateCoupon()">Generate Coupon</button>
+
+		<p id="couponResult"></p>
+
+	
+	</div>
+
+<script>
+
+	 window.onload =function load(){
+		alert("Welcome to the XYZ Bank ");
+	};
+
+	
+	function showWelcomeMessage() {
+		document.getElementById("welcome").innerHTML = "Welcome back, valued customer!";
+	}
+
+	showWelcomeMessage();
+
+
+	
+	function showSteps() {
+		var stepsDiv = document.getElementById("steps");
+
+		if (stepsDiv.style.display === "none") {
+			stepsDiv.style.display = "block";
+		} else {
+			stepsDiv.style.display = "none";
+		}
+	}
+
+
+		function validateCustomer()
+	{
+		var custID=document.getElementById("custID").value;
+		var validateCust=custID.includes("XYZ");
+		if (validateCust)
+		{
+			const container = document.getElementById("validatemessage");
+			container.innerHTML = "<p>you are valid customer. Generate the coupon!</p>";
+			return true ;
+		}
+		else
+		{
+			const container = document.getElementById("validatemessage");
+			container.innerHTML="<p> Customer id is not valid</p>";
+			return false;
+		}
+	}
+	
+	function generateCoupon() {
+		if (validateCustomer()){
+		var customerId = document.getElementById("customerId").value;
+		if (customerId === "") {
+			document.getElementById("couponResult").innerHTML = "Please enter your Customer ID";
+		} else {
+			var couponCode = "DIWALI" + customerId;
+			document.getElementById("couponResult").innerHTML = "Your coupon code is: " + couponCode;
+		}
+		}
+		
+		
+	}
+
+
+</script>
+
+</body>
+</html>
